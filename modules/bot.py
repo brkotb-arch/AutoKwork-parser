@@ -1,5 +1,7 @@
 from loguru import logger
-from config import TOKEN, USERID
+import os
+TOKEN = os.environ.get("TOKEN")
+USERID = os.environ.get("USERID")
 import telebot
 # telebot.apihelper.API_URL = "https://tg-proxy.brkotb.workers.dev"
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
