@@ -1,5 +1,7 @@
 from loguru import logger
-from config import LOGIN, PASSWORD
+import os
+LOGIN = os.environ.get("LOGIN")
+PASSWORD = os.environ.get("PASSWORD")
 import requests
 import re
 import json, json5
