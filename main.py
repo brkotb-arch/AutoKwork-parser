@@ -7,6 +7,22 @@ from time import sleep
 setlogger("main.log")
 kwork = KworkAPI()
 
+import requests
+import threading
+import time
+
+def ping_bot():
+    bot_url = "https://твой-бот.onrender.com/health"  # замени на URL твоего бота
+    while True:
+        try:
+            requests.get(bot_url, timeout=10)
+            print("Бот пинганут, работает")
+        except Exception as e:
+            print(f"Ошибка пинга бота: {e}")
+        time.sleep(540)  # 9 минут — меньше 15, чтобы Render не усыпил
+
+threading.Thread(target=ping_bot, daemon=True).start()
+
 # Файл для хранения полученных id кворков
 ORDERS_FILE = "orders.json"
 
